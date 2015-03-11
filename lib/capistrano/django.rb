@@ -15,7 +15,7 @@ namespace :deploy do
 
   task :nginx_restart do
     on roles(:web) do |h|
-      within release_path do
+      within project_path do
         pid_file = "#{releases_path}/gunicorn.pid"
         if test "[ -e #{pid_file} ]"
           execute "kill `cat #{pid_file}`"
